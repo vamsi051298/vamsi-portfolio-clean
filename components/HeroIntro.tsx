@@ -19,7 +19,7 @@ export default function HeroIntro() {
   if (enter) return null;
 
   return (
-    <div className={`fixed inset-0 z-50 flex items-center justify-center ${prefersReduced ? "reduced-motion" : ""}`}>
+    <div className={`fixed inset-0 z-50 flex items-center justify-center bg-white ${prefersReduced ? "reduced-motion" : ""}`}>
       <motion.div
         initial={{ opacity: 0, scale: 0.92 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -30,8 +30,7 @@ export default function HeroIntro() {
         <p className="mt-4 text-lg md:text-xl" style={{ color: 'var(--text-secondary)' }}>{profile.tagline}</p>
         <motion.button
           onClick={() => setEnter(true)}
-          className="mt-8 rounded-lg px-6 py-3 glass-card hover:glow transition-all"
-          style={{ background: 'rgba(255, 255, 255, 0.2)', border: '1px solid rgba(255, 255, 255, 0.4)' }}
+          className="mt-8 rounded-lg px-6 py-3 bg-blue-600 text-white hover:bg-blue-700 transition-colors"
           initial={{ y: 10, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.6 }}
