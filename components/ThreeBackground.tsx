@@ -32,8 +32,8 @@ export default function ThreeBackground() {
       opacity: number;
 
       constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
+        this.x = Math.random() * (canvas?.width || 1920);
+        this.y = Math.random() * (canvas?.height || 1080);
         this.z = Math.random() * 1000;
         this.prevX = this.x;
         this.prevY = this.y;
@@ -48,8 +48,8 @@ export default function ThreeBackground() {
         this.z -= this.speed;
         
         if (this.z <= 0) {
-          this.x = Math.random() * canvas.width;
-          this.y = Math.random() * canvas.height;
+          this.x = Math.random() * (canvas?.width || 1920);
+          this.y = Math.random() * (canvas?.height || 1080);
           this.z = 1000;
           this.prevX = this.x;
           this.prevY = this.y;
@@ -57,8 +57,8 @@ export default function ThreeBackground() {
 
         // Calculate screen position
         const k = 128 / this.z;
-        this.x = this.x * k + canvas.width / 2;
-        this.y = this.y * k + canvas.height / 2;
+        this.x = this.x * k + (canvas?.width || 1920) / 2;
+        this.y = this.y * k + (canvas?.height || 1080) / 2;
       }
 
       draw() {
