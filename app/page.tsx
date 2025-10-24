@@ -1,149 +1,171 @@
 "use client";
 
 import { profile } from "@/data/profile";
-import NavMenu from "@/components/NavMenu";
-import Section from "@/components/Section";
-import ProjectCard from "@/components/ProjectCard";
-import ContactForm from "@/components/ContactForm";
 
 export default function Page() {
   return (
-    <main id="home">
-      <NavMenu />
+    <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem 1rem', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+      {/* Header */}
+      <header style={{ marginBottom: '3rem' }}>
+        <h1 style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '0.5rem', color: '#1a1a1a' }}>
+          {profile.name}
+        </h1>
+        <p style={{ fontSize: '1.1rem', color: '#666', marginBottom: '0.5rem' }}>
+          {profile.title}
+        </p>
+        <p style={{ color: '#666', marginBottom: '1rem' }}>
+          {profile.location}
+        </p>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
+          <a href={`mailto:${profile.email}`} style={{ color: '#0066cc', textDecoration: 'none' }}>
+            {profile.email}
+          </a>
+          <a href={`tel:${profile.phone}`} style={{ color: '#0066cc', textDecoration: 'none' }}>
+            {profile.phone}
+          </a>
+          <a href={profile.links.github} target="_blank" style={{ color: '#0066cc', textDecoration: 'none' }}>
+            GitHub
+          </a>
+          <a href={profile.links.linkedin} target="_blank" style={{ color: '#0066cc', textDecoration: 'none' }}>
+            LinkedIn
+          </a>
+          <a href={profile.links.leetcode} target="_blank" style={{ color: '#0066cc', textDecoration: 'none' }}>
+            LeetCode
+          </a>
+        </div>
+      </header>
 
-      {/* Hero */}
-      <section className="section">
-        <div className="wrap">
-          <h1>{profile.name}</h1>
-          <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', marginBottom: '1rem' }}>
-            {profile.title}
-          </p>
-          <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>
-            {profile.location}
-          </p>
-          <div className="contact-info">
-            <a href={`mailto:${profile.email}`}>{profile.email}</a>
-            <a href={`tel:${profile.phone}`}>{profile.phone}</a>
-            <a href={profile.links.github} target="_blank">GitHub</a>
-            <a href={profile.links.linkedin} target="_blank">LinkedIn</a>
-            <a href={profile.links.leetcode} target="_blank">LeetCode</a>
+      {/* Summary */}
+      <section style={{ marginBottom: '3rem' }}>
+        <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem', color: '#1a1a1a' }}>
+          Summary
+        </h2>
+        <p style={{ color: '#333', lineHeight: '1.6' }}>
+          {profile.summary}
+        </p>
+      </section>
+
+      {/* Experience */}
+      <section style={{ marginBottom: '3rem' }}>
+        <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem', color: '#1a1a1a' }}>
+          Experience
+        </h2>
+        {profile.experience.map((job) => (
+          <div key={job.org} style={{ marginBottom: '2rem' }}>
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '0.5rem', color: '#1a1a1a' }}>
+              {job.role} | {job.org}
+            </h3>
+            <p style={{ color: '#666', fontSize: '0.9rem', marginBottom: '0.5rem' }}>
+              {job.period}
+            </p>
+            <ul style={{ color: '#333', lineHeight: '1.6', paddingLeft: '1.5rem' }}>
+              {job.points.map((pt, i) => (
+                <li key={i} style={{ marginBottom: '0.5rem' }}>{pt}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </section>
+
+      {/* Projects */}
+      <section style={{ marginBottom: '3rem' }}>
+        <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem', color: '#1a1a1a' }}>
+          Projects
+        </h2>
+        {profile.projects.map((p) => (
+          <div key={p.name} style={{ marginBottom: '2rem' }}>
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '0.5rem', color: '#1a1a1a' }}>
+              {p.name}
+            </h3>
+            <div style={{ marginBottom: '0.5rem' }}>
+              {p.tech.map((t) => (
+                <span key={t} style={{ 
+                  display: 'inline-block', 
+                  background: '#f5f5f5', 
+                  padding: '0.2rem 0.5rem', 
+                  margin: '0.2rem 0.2rem 0.2rem 0', 
+                  borderRadius: '3px', 
+                  fontSize: '0.8rem',
+                  color: '#333'
+                }}>
+                  {t}
+                </span>
+              ))}
+            </div>
+            <ul style={{ color: '#333', lineHeight: '1.6', paddingLeft: '1.5rem' }}>
+              {p.bullets.map((b, i) => (
+                <li key={i} style={{ marginBottom: '0.5rem' }}>{b}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </section>
+
+      {/* Skills */}
+      <section style={{ marginBottom: '3rem' }}>
+        <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem', color: '#1a1a1a' }}>
+          Skills
+        </h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+          <div>
+            <h3 style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '0.5rem', color: '#1a1a1a' }}>
+              Programming
+            </h3>
+            <p style={{ color: '#333', fontSize: '0.9rem' }}>
+              {profile.skills.programming.join(', ')}
+            </p>
+          </div>
+          <div>
+            <h3 style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '0.5rem', color: '#1a1a1a' }}>
+              Frameworks
+            </h3>
+            <p style={{ color: '#333', fontSize: '0.9rem' }}>
+              {profile.skills.frameworks.join(', ')}
+            </p>
+          </div>
+          <div>
+            <h3 style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '0.5rem', color: '#1a1a1a' }}>
+              Cloud & DevOps
+            </h3>
+            <p style={{ color: '#333', fontSize: '0.9rem' }}>
+              {profile.skills.cloudDevOps.join(', ')}
+            </p>
+          </div>
+          <div>
+            <h3 style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '0.5rem', color: '#1a1a1a' }}>
+              Databases
+            </h3>
+            <p style={{ color: '#333', fontSize: '0.9rem' }}>
+              {profile.skills.databases.join(', ')}
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Summary */}
-      <Section id="summary" title="Summary">
-        <div className="card">
-          <p>{profile.summary}</p>
-        </div>
-      </Section>
-
-      {/* Work Experience */}
-      <Section id="experience" title="Work Experience">
-        <div className="space-y-6">
-          {profile.experience.map((job) => (
-            <div key={job.org} className="card">
-              <div className="flex flex-wrap items-baseline gap-3 mb-4">
-                <h3>{job.role}</h3>
-                <span style={{ color: 'var(--text-secondary)' }}>| {job.org}</span>
-                <span className="ml-auto text-sm" style={{ color: 'var(--text-secondary)' }}>{job.period}</span>
-              </div>
-              <ul className="list-disc pl-6 space-y-2">
-                {job.points.map((pt, i) => <li key={i}>{pt}</li>)}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* Projects */}
-      <Section id="projects" title="Projects">
-        <div className="space-y-6">
-          {profile.projects.map((p) => (
-            <div key={p.name} className="card">
-              <h3>{p.name}</h3>
-              <div className="mt-3 mb-4">
-                {p.tech.map((t) => (
-                  <span key={t} className="tech-tag">{t}</span>
-                ))}
-              </div>
-              <ul className="list-disc pl-6 space-y-2">
-                {p.bullets.map((b, i) => <li key={i}>{b}</li>)}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* Technical Skills */}
-      <Section id="skills" title="Technical Skills">
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="card">
-            <h3>Programming</h3>
-            <div className="mt-3">
-              {profile.skills.programming.map((skill) => (
-                <span key={skill} className="tech-tag">{skill}</span>
-              ))}
-            </div>
-            <hr className="sep" />
-            <h3>Frameworks</h3>
-            <div className="mt-3">
-              {profile.skills.frameworks.map((skill) => (
-                <span key={skill} className="tech-tag">{skill}</span>
-              ))}
-            </div>
-          </div>
-          <div className="card">
-            <h3>Cloud & DevOps</h3>
-            <div className="mt-3">
-              {profile.skills.cloudDevOps.map((skill) => (
-                <span key={skill} className="tech-tag">{skill}</span>
-              ))}
-            </div>
-            <hr className="sep" />
-            <h3>Databases & Messaging</h3>
-            <div className="mt-3">
-              {profile.skills.databases.map((skill) => (
-                <span key={skill} className="tech-tag">{skill}</span>
-              ))}
-            </div>
-          </div>
-          <div className="card">
-            <h3>System Design</h3>
-            <div className="mt-3">
-              {profile.skills.systemDesign.map((skill) => (
-                <span key={skill} className="tech-tag">{skill}</span>
-              ))}
-            </div>
-          </div>
-          <div className="card">
-            <h3>Testing & Monitoring</h3>
-            <div className="mt-3">
-              {profile.skills.testing.map((skill) => (
-                <span key={skill} className="tech-tag">{skill}</span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </Section>
-
       {/* Education */}
-      <Section id="education" title="Education">
-        <div className="grid md:grid-cols-2 gap-6">
-          {profile.education.map((e) => (
-            <div key={e.school} className="card">
-              <h3>{e.school}</h3>
-              <p className="mt-2">{e.degree}</p>
-              <p className="mt-1" style={{ color: 'var(--text-secondary)' }}>{e.period} · GPA {e.gpa}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
+      <section style={{ marginBottom: '3rem' }}>
+        <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem', color: '#1a1a1a' }}>
+          Education
+        </h2>
+        {profile.education.map((e) => (
+          <div key={e.school} style={{ marginBottom: '1rem' }}>
+            <h3 style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '0.25rem', color: '#1a1a1a' }}>
+              {e.school}
+            </h3>
+            <p style={{ color: '#333', fontSize: '0.9rem', marginBottom: '0.25rem' }}>
+              {e.degree}
+            </p>
+            <p style={{ color: '#666', fontSize: '0.8rem' }}>
+              {e.period} · GPA {e.gpa}
+            </p>
+          </div>
+        ))}
+      </section>
 
-      <footer className="py-10 text-center" style={{ color: 'var(--text-secondary)' }}>
+      {/* Footer */}
+      <footer style={{ textAlign: 'center', color: '#666', fontSize: '0.9rem', marginTop: '3rem' }}>
         <p>© {new Date().getFullYear()} {profile.name}</p>
-        <p className="mt-2">Built with Next.js, TypeScript, and lots of ☕</p>
       </footer>
-    </main>
+    </div>
   );
 }
