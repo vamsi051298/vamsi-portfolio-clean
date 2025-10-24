@@ -23,7 +23,7 @@ function StarField() {
     if (!points.current) return;
     points.current.rotation.z += dt * 0.01;
   });
-  return <points ref={points} geometry={geom} material={mat} />;
+  return <primitive ref={points} object={new THREE.Points(geom, mat)} />;
 }
 
 function AuroraPlane() {
