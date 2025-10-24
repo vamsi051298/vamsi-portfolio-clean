@@ -1,0 +1,14 @@
+IMPORTANT: Add your background image here!
+
+1. Find a beautiful aurora/starry night image
+2. Rename it to: bg-aurora.jpg
+3. Place it in this public/ folder
+4. Recommended size: 2400px wide, ~400-800 KB
+
+The image will be used as the background for your portfolio.
+You can find free aurora images on:
+- Unsplash.com
+- Pexels.com
+- Pixabay.com
+
+Search for: "aurora borealis", "starry night", "space", "galaxy"
