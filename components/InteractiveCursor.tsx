@@ -50,11 +50,13 @@ export default function InteractiveCursor() {
       if (target.tagName === "A" || target.tagName === "BUTTON" || target.classList.contains("interactive")) {
         cursor.style.transform = "scale(2)";
         cursorFollower.style.transform = "scale(0.5)";
-        cursor.style.backgroundColor = "rgba(255, 255, 255, 0.8)";
+        cursor.style.backgroundColor = "rgba(255, 107, 107, 0.9)";
+        cursor.style.boxShadow = "0 0 20px rgba(255, 107, 107, 0.6)";
       } else {
         cursor.style.transform = "scale(1)";
         cursorFollower.style.transform = "scale(1)";
-        cursor.style.backgroundColor = "rgba(255, 255, 255, 0.3)";
+        cursor.style.backgroundColor = "rgba(255, 255, 255, 0.8)";
+        cursor.style.boxShadow = "0 0 10px rgba(255, 255, 255, 0.4)";
       }
     };
 
@@ -84,8 +86,8 @@ export default function InteractiveCursor() {
       {/* Cursor follower */}
       <div
         ref={cursorFollowerRef}
-        className="fixed w-8 h-8 border border-white rounded-full pointer-events-none z-40 transition-all duration-300 ease-out"
-        style={{ opacity: 0 }}
+        className="fixed w-8 h-8 border-2 border-white rounded-full pointer-events-none z-40 transition-all duration-300 ease-out"
+        style={{ opacity: 0, boxShadow: "0 0 15px rgba(255, 255, 255, 0.5)" }}
       />
     </>
   );

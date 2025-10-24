@@ -16,7 +16,7 @@ export default function NavMenu() {
         aria-label="Open menu"
         onClick={() => setOpen((v) => !v)}
         className="fixed top-5 right-5 z-40 rounded-lg glass-card px-4 py-2 text-sm hover:glow transition-all"
-        style={{ background: 'rgba(255, 255, 255, 0.1)', border: '1px solid rgba(255, 255, 255, 0.2)' }}
+        style={{ background: 'rgba(255, 255, 255, 0.2)', border: '1px solid rgba(255, 255, 255, 0.4)' }}
       >
         Menu
       </button>
@@ -28,7 +28,7 @@ export default function NavMenu() {
             exit={{ opacity: 0, x: 80 }}
             transition={{ type: "spring", stiffness: 120, damping: 16 }}
             className="fixed top-0 right-0 z-30 h-full w-[280px] glass-card p-6 shadow-lg"
-            style={{ background: 'rgba(0, 0, 0, 0.8)', backdropFilter: 'blur(20px)', border: '1px solid rgba(255, 255, 255, 0.1)' }}
+            style={{ background: 'rgba(255, 255, 255, 0.15)', backdropFilter: 'blur(20px)', border: '1px solid rgba(255, 255, 255, 0.3)' }}
           >
             <h3 className="text-lg mb-6 font-semibold" style={{ color: 'var(--text-primary)' }}>Navigate</h3>
             <ul className="space-y-3">

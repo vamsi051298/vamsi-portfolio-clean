@@ -66,15 +66,24 @@ export default function ThreeBackground() {
           ctx.beginPath();
           ctx.moveTo(this.prevX, this.prevY);
           ctx.lineTo(this.x, this.y);
-          ctx.strokeStyle = `rgba(255, 255, 255, ${this.opacity})`;
+          ctx.strokeStyle = `rgba(255, 255, 255, ${this.opacity * 0.8})`;
           ctx.lineWidth = this.size;
           ctx.stroke();
 
-          // Draw star point
+          // Draw star point with bright colors
           ctx.beginPath();
           ctx.arc(this.x, this.y, this.size / 2, 0, Math.PI * 2);
           ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
           ctx.fill();
+          
+          // Add glow effect
+          ctx.shadowColor = 'rgba(255, 255, 255, 0.8)';
+          ctx.shadowBlur = 10;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size / 4, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity * 1.2})`;
+          ctx.fill();
+          ctx.shadowBlur = 0;
         }
       }
     }
@@ -88,7 +97,7 @@ export default function ThreeBackground() {
     // Animation loop
     let animationId: number;
     const animate = () => {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+      ctx.fillStyle = "rgba(255, 255, 255, 0.03)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       stars.forEach(star => {
@@ -108,12 +117,23 @@ export default function ThreeBackground() {
   }, []);
 
   return (
-    <div className="fixed inset-0 -z-10 bg-black">
+    <div className="fixed inset-0 -z-10">
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"
-        style={{ background: "radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f0f23 100%)" }}
+        style={{ 
+          background: "linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%)",
+          backgroundSize: "400% 400%",
+          animation: "gradientShift 15s ease infinite"
+        }}
       />
+      <style jsx>{`
+        @keyframes gradientShift {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+      `}</style>
     </div>
   );
 }
