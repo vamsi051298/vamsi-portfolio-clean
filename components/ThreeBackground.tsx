@@ -23,7 +23,12 @@ function StarField() {
     if (!points.current) return;
     points.current.rotation.z += dt * 0.01;
   });
-  return <primitive ref={points} object={new THREE.Points(geom, mat)} />;
+  return (
+    <points ref={points}>
+      <bufferGeometry attach="geometry" {...geom} />
+      <pointsMaterial attach="material" {...mat} />
+    </points>
+  );
 }
 
 function AuroraPlane() {
@@ -82,7 +87,7 @@ function AuroraPlane() {
   return (
     <mesh ref={mesh} position={[0, -1.2, -6]}>
       <planeGeometry args={[20, 8, 64, 64]} />
-      <primitive object={mat} attach="material" />
+      <shaderMaterial attach="material" {...mat} />
     </mesh>
   );
 }
