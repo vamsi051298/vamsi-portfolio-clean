@@ -6,9 +6,7 @@ import HeroIntro from "@/components/HeroIntro";
 import NavMenu from "@/components/NavMenu";
 import Section from "@/components/Section";
 import ProjectCard from "@/components/ProjectCard";
-import MetricBadge from "@/components/MetricBadge";
 import ContactForm from "@/components/ContactForm";
-import { motion } from "framer-motion";
 
 export default function Page() {
   return (
@@ -18,68 +16,45 @@ export default function Page() {
       <NavMenu />
 
       {/* Hero */}
-      <section className="section pt-28">
+      <section className="section pt-20">
         <div className="wrap">
-          <h1 className="text-glow">{profile.name}</h1>
-          <p className="mt-3 max-w-2xl">{profile.tagline}</p>
-          <div className="mt-4 flex flex-wrap items-center gap-2">
-            <a className="rounded-full bg-white/10 px-3 py-1 border border-white/15" href={profile.links.github} target="_blank">GitHub</a>
-            <a className="rounded-full bg-white/10 px-3 py-1 border border-white/15" href={profile.links.linkedin} target="_blank">LinkedIn</a>
-            <a className="rounded-full bg-white/10 px-3 py-1 border border-white/15" href={profile.links.leetcode} target="_blank">LeetCode</a>
-            <a className="rounded-full bg-white/10 px-3 py-1 border border-white/15" href={`mailto:${profile.email}`}>Email</a>
+          <h1>{profile.name}</h1>
+          <h2 style={{ fontSize: '1.5rem', fontWeight: '400', color: 'var(--text-secondary)', marginBottom: '2rem' }}>
+            {profile.title}
+          </h2>
+          <div className="contact-info">
+            <a href={`mailto:${profile.email}`}>Email: {profile.email}</a>
+            <a href={`tel:${profile.phone}`}>Mobile: {profile.phone}</a>
+            <span>Location: {profile.location}</span>
+          </div>
+          <div className="contact-info">
+            <a href={profile.links.github} target="_blank">GitHub: github.com/vamsi051298</a>
+            <a href={profile.links.linkedin} target="_blank">LinkedIn: linkedin.com/in/vssvamsikrishnachirala</a>
+            <a href={profile.links.leetcode} target="_blank">LeetCode: leetcode.com/vamsi051298</a>
           </div>
         </div>
       </section>
 
-      {/* About */}
-      <Section id="about" title="About">
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="glass rounded-2xl p-5 border border-white/10">
-            <p className="mb-2">{profile.summary[0]}</p>
-            <p>{profile.summary[1]}</p>
-          </div>
-          <div className="glass rounded-2xl p-5 border border-white/10">
-            <h3 className="mb-2">What drives me</h3>
-            <p>
-              I care about systems that are reliable, observable, and pleasant to use. I like turning complex constraints into simple flows. 
-              I mentor, document, and automate, so teams move faster with confidence.
-            </p>
-          </div>
+      {/* Summary */}
+      <Section id="summary" title="Summary">
+        <div className="card">
+          <p>{profile.summary}</p>
         </div>
       </Section>
 
-      {/* Core Principles */}
-      <Section id="principles" title="Core Principles">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          {profile.principles.map((p) => (
-            <motion.div
-              key={p.title}
-              whileHover={{ y: -3 }}
-              className="glass rounded-2xl p-4 border border-white/10 text-center"
-            >
-              <h3 className="text-white">{p.title}</h3>
-              <p className="text-sm mt-1">{p.text}</p>
-            </motion.div>
-          ))}
-        </div>
-      </Section>
-
-      {/* Experience */}
-      <Section id="experience" title="Experience">
-        <div className="space-y-6">
+      {/* Work Experience */}
+      <Section id="experience" title="Work Experience">
+        <div className="space-y-8">
           {profile.experience.map((job) => (
-            <div key={job.org} className="glass rounded-2xl p-5 border border-white/10">
-              <div className="flex flex-wrap items-baseline gap-3">
-                <h3 className="text-xl font-semibold">{job.role}</h3>
-                <span className="text-white/70">— {job.org}</span>
-                <span className="ml-auto text-sm opacity-80">{job.period}</span>
+            <div key={job.org} className="card">
+              <div className="flex flex-wrap items-baseline gap-3 mb-4">
+                <h3>{job.role}</h3>
+                <span style={{ color: 'var(--text-secondary)' }}>| {job.org}</span>
+                <span className="ml-auto text-sm" style={{ color: 'var(--text-secondary)' }}>{job.period}</span>
               </div>
-              <ul className="list-disc pl-5 mt-3 space-y-1">
+              <ul className="list-disc pl-6 space-y-2">
                 {job.points.map((pt, i) => <li key={i}>{pt}</li>)}
               </ul>
-              <div className="mt-3">
-                {job.metrics.map((m) => <MetricBadge key={m.label} label={m.label} value={m.value} />)}
-              </div>
             </div>
           ))}
         </div>
@@ -87,70 +62,89 @@ export default function Page() {
 
       {/* Projects */}
       <Section id="projects" title="Projects">
-        <div className="grid md:grid-cols-2 gap-5">
+        <div className="space-y-8">
           {profile.projects.map((p) => (
-            <ProjectCard key={p.name} name={p.name} tech={p.tech} bullets={p.bullets} metrics={p.metrics} />
+            <div key={p.name} className="card">
+              <h3>{p.name}</h3>
+              <div className="mt-3 mb-4">
+                {p.tech.map((t) => (
+                  <span key={t} className="tech-tag">{t}</span>
+                ))}
+              </div>
+              <ul className="list-disc pl-6 space-y-2">
+                {p.bullets.map((b, i) => <li key={i}>{b}</li>)}
+              </ul>
+            </div>
           ))}
         </div>
       </Section>
 
-      {/* Skills */}
-      <Section id="skills" title="Skills">
+      {/* Technical Skills */}
+      <Section id="skills" title="Technical Skills">
         <div className="grid md:grid-cols-2 gap-6">
-          <div className="glass rounded-2xl p-5 border border-white/10">
-            <h3 className="mb-2">Programming</h3>
-            <p>{profile.skills.programming.join(" · ")}</p>
+          <div className="card">
+            <h3>Programming</h3>
+            <div className="mt-3">
+              {profile.skills.programming.map((skill) => (
+                <span key={skill} className="tech-tag">{skill}</span>
+              ))}
+            </div>
             <hr className="sep" />
-            <h3 className="mb-2">Frameworks</h3>
-            <p>{profile.skills.frameworks.join(" · ")}</p>
+            <h3>Frameworks</h3>
+            <div className="mt-3">
+              {profile.skills.frameworks.map((skill) => (
+                <span key={skill} className="tech-tag">{skill}</span>
+              ))}
+            </div>
           </div>
-          <div className="glass rounded-2xl p-5 border border-white/10">
-            <h3 className="mb-2">Cloud & DevOps</h3>
-            <p>{profile.skills.cloudDevOps.join(" · ")}</p>
+          <div className="card">
+            <h3>Cloud & DevOps</h3>
+            <div className="mt-3">
+              {profile.skills.cloudDevOps.map((skill) => (
+                <span key={skill} className="tech-tag">{skill}</span>
+              ))}
+            </div>
             <hr className="sep" />
-            <h3 className="mb-2">Data</h3>
-            <p>{profile.skills.data.join(" · ")}</p>
+            <h3>Databases & Messaging</h3>
+            <div className="mt-3">
+              {profile.skills.databases.map((skill) => (
+                <span key={skill} className="tech-tag">{skill}</span>
+              ))}
+            </div>
           </div>
-          <div className="glass rounded-2xl p-5 border border-white/10">
-            <h3 className="mb-2">System Design</h3>
-            <p>{profile.skills.design.join(" · ")}</p>
+          <div className="card">
+            <h3>System Design</h3>
+            <div className="mt-3">
+              {profile.skills.systemDesign.map((skill) => (
+                <span key={skill} className="tech-tag">{skill}</span>
+              ))}
+            </div>
           </div>
-          <div className="glass rounded-2xl p-5 border border-white/10">
-            <h3 className="mb-2">Testing & Monitoring</h3>
-            <p>{profile.skills.testing.join(" · ")}</p>
+          <div className="card">
+            <h3>Testing & Monitoring</h3>
+            <div className="mt-3">
+              {profile.skills.testing.map((skill) => (
+                <span key={skill} className="tech-tag">{skill}</span>
+              ))}
+            </div>
           </div>
         </div>
       </Section>
 
       {/* Education */}
       <Section id="education" title="Education">
-        <div className="grid md:grid-cols-2 gap-5">
+        <div className="grid md:grid-cols-2 gap-6">
           {profile.education.map((e) => (
-            <div key={e.school} className="glass rounded-2xl p-5 border border-white/10">
-              <h3 className="font-semibold">{e.school}</h3>
-              <p className="text-sm mt-1">{e.degree}</p>
-              <p className="text-xs mt-1 opacity-80">{e.period} · GPA {e.gpa}</p>
+            <div key={e.school} className="card">
+              <h3>{e.school}</h3>
+              <p className="mt-2">{e.degree}</p>
+              <p className="mt-1" style={{ color: 'var(--text-secondary)' }}>{e.period} · GPA {e.gpa}</p>
             </div>
           ))}
         </div>
       </Section>
 
-      {/* Contact */}
-      <Section id="contact" title="Contact">
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="glass rounded-2xl p-5 border border-white/10">
-            <h3 className="mb-2">Reach out</h3>
-            <p>Email: <a href={`mailto:${profile.email}`}>{profile.email}</a></p>
-            <p>Phone: <a href={`tel:${profile.phone}`}>{profile.phone}</a></p>
-            <p className="mt-2">
-              Prefer a quick note? Use the form and I will respond soon.
-            </p>
-          </div>
-          <ContactForm />
-        </div>
-      </Section>
-
-      <footer className="py-10 text-center text-white/60">
+      <footer className="py-10 text-center" style={{ color: 'var(--text-secondary)' }}>
         © {new Date().getFullYear()} {profile.name}
       </footer>
     </main>

@@ -1,7 +1,7 @@
 export const profile = {
   name: "Vamsi Krishna Chirala",
-  title: "Software Engineer — Distributed Systems & Data Platforms",
-  tagline: "I build systems that make data move intelligently with precision, performance, and elegant design.",
+  title: "Software Engineer",
+  tagline: "Building scalable systems with measurable impact",
   location: "Sacramento, CA",
   email: "VkCh051298@gmail.com",
   phone: "+1 (916) 696-0476",
@@ -10,10 +10,7 @@ export const profile = {
     linkedin: "https://www.linkedin.com/in/vssvamsikrishnachirala",
     leetcode: "https://leetcode.com/vamsi051298"
   },
-  summary: [
-    "3+ years across full-stack apps, microservices, and cloud-native platforms using Java, Spring Boot, Node.js, React, AWS, and Kubernetes.",
-    "Focus on resilient architectures, distributed data pipelines, RBAC, and CI/CD automation with measurable impact."
-  ],
+  summary: "Software Engineer with 3+ years of experience delivering full-stack applications, microservices, and cloud-native platforms using Java Spring Boot, Node.js, React, AWS, and Kubernetes. Skilled in high-performance APIs, distributed data pipelines, and resilient architectures. Recognized for ownership in building systems with measurable impact.",
   principles: [
     { title: "Precision", text: "Every design starts with measurable clarity." },
     { title: "Scalability", text: "Build once, scale infinitely." },
@@ -27,15 +24,10 @@ export const profile = {
       org: "California State University, Sacramento",
       period: "Jan 2025 – Present",
       points: [
-        "Built DataBridge (Spring Boot + Node.js + PostgreSQL + Redis) with RBAC, dataset versioning, retention policies for 50+ researchers.",
-        "Developing QueryScope (Elasticsearch + Kibana) on Kubernetes with Kafka ingestion and Terraform infrastructure, achieving 75% faster queries.",
-        "Designed Redis LFU/TTL caching and automated CI/CD with GitHub Actions, Helm, Gradle/Maven; reduced release cycles from a week to 30 minutes.",
-        "Co-built Python ETL and Django/FastAPI dashboards for reproducible analytics and lightweight REST endpoints."
-      ],
-      metrics: [
-        { label: "Researchers", value: "50+" },
-        { label: "Query speedup", value: "75%" },
-        { label: "Release cycle", value: "→ 30 min" }
+        "Built DataBridge, a Spring Boot and Node.js platform packaged via Gradle on PostgreSQL and Redis with RBAC, dataset versioning and retention policies, enabling 50+ researchers to securely share and reuse data.",
+        "Developing QueryScope, an Elasticsearch and Kibana dashboard on Kubernetes with Kafka ingestion and Terraform-based infrastructure for AI-driven analytics, achieving 75% faster queries.",
+        "Designed a Redis LFU/TTL caching layer and automated CI/CD with GitHub Actions, Helm and Gradle/Maven, reducing release cycles from one week to 30 minutes.",
+        "Co-built Python ETL pipelines and a Django/FastAPI dashboard, normalizing research logs into schemas for reproducible analytics and lightweight REST endpoints."
       ]
     },
     {
@@ -43,16 +35,21 @@ export const profile = {
       org: "BNP Paribas",
       period: "Jul 2020 – Jun 2022",
       points: [
-        "Split a legacy monolith into Spring Boot and Node.js microservices with circuit breakers and load-balanced APIs; scaled to 5,000+ sessions at sub-second latency.",
-        "Built async KYC workflows on Kafka with Redis; cut manual checks by 60%.",
-        "Implemented RBAC with OAuth2/JWT/SSO, added token verifiers and policy evaluators to secure APIs and ensure compliance.",
-        "Containerized services on AWS with Docker/Kubernetes; autoscaling and Terraform monitoring for 99.9% uptime.",
-        "Compliance logging pipeline with Elasticsearch and Redis; tuned queries to cut audit lookups by 70% and mentored new hires on Kafka/ES/K8s."
-      ],
-      metrics: [
-        { label: "Sessions", value: "5,000+" },
-        { label: "Manual checks", value: "−60%" },
-        { label: "Uptime", value: "99.9%" }
+        "Re-architected the Client Onboarding Platform into Spring Boot and Node.js microservices with circuit breakers and load-balanced APIs, scaled to 5,000+ sessions at sub-second latency.",
+        "Built asynchronous KYC workflows on Kafka pipelines with an in-memory Redis store, eliminating blocking calls and cutting manual checks by 60%.",
+        "Implemented RBAC with OAuth2, JWT and SSO to secure APIs and ensure compliance.",
+        "Containerized services with Docker and Kubernetes on AWS, configured autoscaling and Terraform-based monitoring to sustain 99.9% uptime.",
+        "Developed a compliance logging pipeline using Elasticsearch and Redis, tuning queries to cut audit lookups by 70%, and mentored new hires on Kafka, Elasticsearch and Kubernetes."
+      ]
+    },
+    {
+      role: "Associate Software Development Engineer",
+      org: "BNP Paribas",
+      period: "Jan 2020 – Jun 2020",
+      points: [
+        "Refactored the onboarding frontend into React.js and Spring MVC, modularized UI and optimized state management, cut client journey time by 30%.",
+        "Rewrote backend controllers in Java and TypeScript, consolidated duplicated logic and streamlined API calls, improving responsiveness and reducing technical debt.",
+        "Enhanced error handling in Spring Boot with custom exception resolvers and validation layers, lowered input errors by 30%, and mentored interns with Postman collections and debug scripts."
       ]
     }
   ],
@@ -61,39 +58,36 @@ export const profile = {
       name: "Cloud-Native E-Commerce Platform",
       tech: ["Spring Boot", "Node.js/TypeScript", "AWS Lambda", "Saga", "JWT", "K8s"],
       bullets: [
-        "Backend microservices for orders, payments, inventory; sustained 99.9% uptime under flash-sale workloads.",
-        "Saga-based transactions with idempotent retries and compensations; cut double-charge failures by 40%.",
-        "Partition-aware load balancing for checkout APIs; aligned hot SKUs across shards to keep latency low."
-      ],
-      metrics: [{ label: "Double-charge", value: "−40%" }, { label: "Uptime", value: "99.9%" }]
+        "Built backend microservices with Spring Boot, Node.js/TypeScript and AWS Lambda for orders, payments and inventory, sustaining 99.9% uptime under flash-sale workloads.",
+        "Designed saga-based transactions with idempotent retries and compensating actions, cutting double-charge failures by 40% and ensuring reliable settlements.",
+        "Implemented partition-aware load balancing for checkout APIs, aligning hot SKUs across shards to sustain low-latency transactions at peak."
+      ]
     },
     {
-      name: "Distributed Event Processing System",
+      name: "High-Throughput Distributed Event Processing System",
       tech: ["Kafka", "Redis LFU/TTL", "Kubernetes", "Prometheus", "Grafana"],
       bullets: [
-        "Partitioned topics and consumer groups; sustained 1M+ messages/sec without loss.",
-        "Hot-message buffering with Redis LFU/TTL; reduced processing latency by 60%.",
-        "Deployed with HPA; instrumented and stress-tested with Prometheus/Grafana."
-      ],
-      metrics: [{ label: "Throughput", value: "1M+/s" }, { label: "Latency", value: "−60%" }]
+        "Designed a Kafka pipeline with partitioned topics and consumer groups tuned to sustain 1 million+ messages/sec without loss.",
+        "Added a Redis LFU/TTL caching layer for hot-message buffering, cutting consumer lag and reducing processing latency by 60%.",
+        "Deployed on Kubernetes with HPA and integrated Prometheus and Grafana to stress-test and monitor throughput at production scale."
+      ]
     },
     {
-      name: "Indexing and Query Optimizer",
+      name: "Next-Gen Database Indexing and Query Optimizer",
       tech: ["PostgreSQL", "Redis", "Elasticsearch", "TPC-H"],
       bullets: [
-        "Adaptive indexing that restructures B-trees under skewed workloads; doubled join and aggregation performance.",
-        "Hybrid caching with Redis + Elasticsearch to minimize redundant I/O.",
-        "Benchmarked and tuned buffers/plans for a consistent 2× speedup."
-      ],
-      metrics: [{ label: "Perf", value: "2×" }]
+        "Built adaptive PostgreSQL indexing extensions that restructured B-trees under skewed workloads, doubling performance on joins and aggregations.",
+        "Integrated hybrid caching with Redis and Elasticsearch, serving results from memory or inverted indices to minimize redundant I/O.",
+        "Benchmarked against TPC-H datasets, tuning query plans and buffers for a consistent 2× speedup on enterprise workloads."
+      ]
     }
   ],
   skills: {
-    programming: ["Java", "TypeScript", "JavaScript", "SQL", "Python", "C++", "Go"],
-    frameworks: ["Spring Boot", "Node.js", "React", "FastAPI", "GraphQL", "REST", "WebSockets"],
-    cloudDevOps: ["AWS (EC2, RDS, S3, Lambda, API GW, CloudWatch)", "Kubernetes", "Docker", "GitHub Actions", "Jenkins"],
-    data: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Kafka", "Elasticsearch"],
-    design: ["Microservices", "Event-Driven Architecture", "Caching", "RBAC", "CI/CD", "Terraform", "Gradle", "Maven"],
+    programming: ["Java", "TypeScript", "JavaScript (ES6+)", "SQL", "Python", "C++", "Go"],
+    frameworks: ["Spring Boot", "Node.js", "React.js", "D3.js", "Chart.js", "FastAPI", "GraphQL", "REST", "WebSockets"],
+    cloudDevOps: ["AWS (EC2, RDS, S3, Lambda, API Gateway, CloudWatch)", "Kubernetes", "Docker", "GitHub Actions", "Jenkins"],
+    databases: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Kafka", "Elasticsearch"],
+    systemDesign: ["Microservices", "Event-Driven Architecture", "Caching", "Gradle", "Maven", "IaC (Terraform)", "RBAC", "CI/CD Pipelines"],
     testing: ["JUnit", "Mockito", "Jest", "Postman", "Swagger", "Splunk", "Prometheus", "Grafana", "Git"]
   },
   education: [

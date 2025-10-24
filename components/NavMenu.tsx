@@ -15,7 +15,7 @@ export default function NavMenu() {
       <button
         aria-label="Open menu"
         onClick={() => setOpen((v) => !v)}
-        className="fixed top-5 right-5 z-40 rounded-2xl glass px-4 py-2 text-sm shadow-glow hover:shadow-lg hover:shadow-emerald-400/20"
+        className="fixed top-5 right-5 z-40 rounded-lg bg-white border border-gray-200 px-4 py-2 text-sm shadow-sm hover:shadow-md transition-shadow"
       >
         Menu
       </button>
@@ -26,22 +26,20 @@ export default function NavMenu() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 80 }}
             transition={{ type: "spring", stiffness: 120, damping: 16 }}
-            className="fixed top-0 right-0 z-30 h-full w-[280px] glass border-l border-white/10 p-6"
+            className="fixed top-0 right-0 z-30 h-full w-[280px] bg-white border-l border-gray-200 p-6 shadow-lg"
           >
-            <h3 className="text-lg mb-4 text-glow">Navigate</h3>
+            <h3 className="text-lg mb-4 font-semibold">Navigate</h3>
             <ul className="space-y-3">
               {[
                 ["Home", "#home"],
-                ["About", "#about"],
-                ["Core Principles", "#principles"],
-                ["Experience", "#experience"],
+                ["Summary", "#summary"],
+                ["Work Experience", "#experience"],
                 ["Projects", "#projects"],
-                ["Skills", "#skills"],
+                ["Technical Skills", "#skills"],
                 ["Education", "#education"],
-                ["Contact", "#contact"],
               ].map(([label, href]) => (
                 <li key={href}>
-                  <a className="block rounded-lg px-3 py-2 hover:bg-white/10" href={href} onClick={() => setOpen(false)}>
+                  <a className="block rounded-lg px-3 py-2 hover:bg-gray-50 transition-colors" href={href} onClick={() => setOpen(false)}>
                     {label}
                   </a>
                 </li>
