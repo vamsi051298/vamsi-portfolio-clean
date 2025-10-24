@@ -1,22 +1,5 @@
 "use client";
 
-import { Canvas } from "@react-three/fiber";
-import { useRef } from "react";
-import * as THREE from "three";
-
-function StarField() {
-  const points = useRef<THREE.Points>(null);
-  
-  return (
-    <group>
-      <mesh>
-        <sphereGeometry args={[0.02, 8, 8]} />
-        <meshBasicMaterial color="#a3d5ff" />
-      </mesh>
-    </group>
-  );
-}
-
 export default function ThreeBackground() {
   return (
     <div className="fixed inset-0 -z-10">
@@ -27,10 +10,23 @@ export default function ThreeBackground() {
         className="absolute inset-0 h-full w-full object-cover"
         aria-hidden
       />
-      <Canvas camera={{ position: [0, 0, 7], fov: 60 }}>
-        <ambientLight intensity={0.25} />
-        <StarField />
-      </Canvas>
+      {/* Simple CSS-based starry background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-900/20 via-purple-900/30 to-green-900/20">
+        <div className="absolute inset-0 opacity-60">
+          {Array.from({ length: 100 }).map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-white rounded-full animate-pulse"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 3}s`,
+                animationDuration: `${2 + Math.random() * 2}s`
+              }}
+            />
+          ))}
+        </div>
+      </div>
       <div className="readable-gradient" />
     </div>
   );
