@@ -1,7 +1,6 @@
 "use client";
 
 import { profile } from "@/data/profile";
-import HeroIntro from "@/components/HeroIntro";
 import NavMenu from "@/components/NavMenu";
 import Section from "@/components/Section";
 import ProjectCard from "@/components/ProjectCard";
@@ -10,25 +9,24 @@ import ContactForm from "@/components/ContactForm";
 export default function Page() {
   return (
     <main id="home">
-      <HeroIntro />
       <NavMenu />
 
       {/* Hero */}
       <section className="section">
         <div className="wrap">
           <h1>{profile.name}</h1>
-          <h2 style={{ fontSize: '1.5rem', fontWeight: '400', color: 'var(--text-secondary)', marginBottom: '2rem' }}>
+          <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', marginBottom: '1rem' }}>
             {profile.title}
-          </h2>
+          </p>
+          <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>
+            {profile.location}
+          </p>
           <div className="contact-info">
-            <a href={`mailto:${profile.email}`}>Email: {profile.email}</a>
-            <a href={`tel:${profile.phone}`}>Mobile: {profile.phone}</a>
-            <span>Location: {profile.location}</span>
-          </div>
-          <div className="contact-info">
-            <a href={profile.links.github} target="_blank">GitHub: github.com/vamsi051298</a>
-            <a href={profile.links.linkedin} target="_blank">LinkedIn: linkedin.com/in/vssvamsikrishnachirala</a>
-            <a href={profile.links.leetcode} target="_blank">LeetCode: leetcode.com/vamsi051298</a>
+            <a href={`mailto:${profile.email}`}>{profile.email}</a>
+            <a href={`tel:${profile.phone}`}>{profile.phone}</a>
+            <a href={profile.links.github} target="_blank">GitHub</a>
+            <a href={profile.links.linkedin} target="_blank">LinkedIn</a>
+            <a href={profile.links.leetcode} target="_blank">LeetCode</a>
           </div>
         </div>
       </section>
